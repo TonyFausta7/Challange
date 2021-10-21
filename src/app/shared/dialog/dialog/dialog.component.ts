@@ -55,8 +55,8 @@ export class DialogComponent implements OnInit {
 
   getErrorMessage() {
     if (this.fg.controls.email.hasError('required')
-      && this.fg.controls.first_name.hasError('required')
-      && this.fg.controls.last_name.hasError('required') ) {
+      || this.fg.controls.first_name.hasError('required')
+      || this.fg.controls.last_name.hasError('required') ) {
       return 'You must enter a value';
     }
 
@@ -79,6 +79,9 @@ export class DialogComponent implements OnInit {
   }
 
   add(){
+    if(this.fg.invalid){
+      return
+    }
     this.apiSrv.getDataMentor().subscribe(result=>{
       const id = result.length + 1;
       const body = {
@@ -99,13 +102,12 @@ export class DialogComponent implements OnInit {
 
       this.dialogRef.close(result);
     })
-    // this.apiSrv.postDataMentor(this.fg.value).subscribe(res=>{
-    //   console.log(res)
-    // })
-
   }
 
   edit(){
+    if(this.fg.invalid){
+      return
+    }
     this.apiSrv.getDataMentor().subscribe(result=>{
       const body = {
         _id: this.data.id,
