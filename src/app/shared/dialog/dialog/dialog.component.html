@@ -1,0 +1,170 @@
+<div class="container" *ngIf="data.type === 'delete'">
+  <h1 mat-dialog-title>Delete Mentor</h1>
+  <div mat-dialog-content>
+    <p>Are You Sure Want to Delete This Mentor?</p>
+  </div>
+  <div mat-dialog-actions style="float: right">
+    <button mat-button class="back" (click)="noClick()">No</button>
+    <button
+      mat-button
+      class="delete"
+      (click)="delete()"
+      mat-dialog-close="false"
+      cdkFocusInitial
+    >
+      Yes
+    </button>
+  </div>
+</div>
+
+<div class="container" *ngIf="data.type === 'add'">
+  <form [formGroup]="fg">
+    <h1 mat-dialog-title>Add Mentor</h1>
+    <div mat-dialog-content>
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter Your Email</mat-label>
+          <input
+            matInput
+            placeholder="pat@example.com"
+            formControlName="email"
+            required
+          />
+          <mat-error *ngIf="fg.controls.email?.invalid">{{ getErrorMessage() }}</mat-error>
+        </mat-form-field>
+      </div>
+      
+
+      <mat-form-field appearance="fill">
+        <mat-label>Enter Your First Name</mat-label>
+        <input
+          matInput
+          placeholder="First Name"
+          formControlName="first_name"
+          required
+        />
+        <mat-error *ngIf="fg.controls.first_name?.invalid">{{
+          getErrorMessage()
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Enter Your Last Name</mat-label>
+        <input
+          matInput
+          placeholder="Last Name"
+          formControlName="last_name"
+          required
+        />
+        <mat-error *ngIf="fg.controls.last_name?.invalid">{{ getErrorMessage() }}</mat-error>
+      </mat-form-field>
+
+      <div class="row">
+        <label>Select User Type: </label>
+        <mat-radio-group aria-label="Select an option" formControlName="user_type">
+          <mat-radio-button value="mentor">Mentor</mat-radio-button>
+          <mat-radio-button value="junior">Junior</mat-radio-button>
+        </mat-radio-group>
+        <mat-error *ngIf="fg.controls.user_type?.invalid">{{ getErrorMessage() }}</mat-error>
+      </div>
+
+      <div class="row">
+        <label>Select Status: </label>
+        <mat-radio-group aria-label="Select an option" formControlName="status">
+          <mat-radio-button value="active">Active</mat-radio-button>
+          <mat-radio-button value="pending">Pending</mat-radio-button>
+        </mat-radio-group>
+        <mat-error *ngIf="fg.controls.user_type?.invalid">{{ getErrorMessage() }}</mat-error>
+      </div>
+        
+    </div>
+    <div mat-dialog-actions style="float: right">
+      <button mat-button class="back" (click)="noClick()">No</button>
+      <button
+        mat-button
+        class="add"
+        (click)="add()"
+        mat-dialog-close="false"
+        cdkFocusInitial
+      >
+        Add
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="container" *ngIf="data.type === 'edit'">
+  <form [formGroup]="fg">
+    <h1 mat-dialog-title>Edit Mentor</h1>
+    <div mat-dialog-content>
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter Your Email</mat-label>
+          <input
+            matInput
+            placeholder="pat@example.com"
+            formControlName="email"
+            required
+          />
+          <mat-error *ngIf="fg.controls.email?.invalid">{{ getErrorMessage() }}</mat-error>
+        </mat-form-field>
+      </div>
+      
+
+      <mat-form-field appearance="fill">
+        <mat-label>Enter Your First Name</mat-label>
+        <input
+          matInput
+          placeholder="First Name"
+          formControlName="first_name"
+          required
+        />
+        <mat-error *ngIf="fg.controls.first_name?.invalid">{{
+          getErrorMessage()
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Enter Your Last Name</mat-label>
+        <input
+          matInput
+          placeholder="Last Name"
+          formControlName="last_name"
+          required
+        />
+        <mat-error *ngIf="fg.controls.last_name?.invalid">{{ getErrorMessage() }}</mat-error>
+      </mat-form-field>
+
+      <div class="row">
+        <label>Select User Type: </label>
+        <mat-radio-group aria-label="Select an option" formControlName="user_type">
+          <mat-radio-button value="Mentor">Mentor</mat-radio-button>
+          <mat-radio-button value="Junior">Junior</mat-radio-button>
+        </mat-radio-group>
+        <mat-error *ngIf="fg.controls.user_type?.invalid">{{ getErrorMessage() }}</mat-error>
+      </div>
+
+      <div class="row">
+        <label>Select Status: </label>
+        <mat-radio-group aria-label="Select an option" formControlName="status">
+          <mat-radio-button value="active">Active</mat-radio-button>
+          <mat-radio-button value="pending">Pending</mat-radio-button>
+        </mat-radio-group>
+        <mat-error *ngIf="fg.controls.user_type?.invalid">{{ getErrorMessage() }}</mat-error>
+      </div>
+        
+    </div>
+    <div mat-dialog-actions style="float: right">
+      <button mat-button class="back" (click)="noClick()">No</button>
+      <button
+        mat-button
+        class="add"
+        (click)="edit()"
+        mat-dialog-close="false"
+        cdkFocusInitial
+      >
+        Edit
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,20 @@
+.delete{
+    background-color: red;
+}
+
+.add{
+    background-color: blue;
+}
+
+.back{
+    background-color: grey;
+    margin: 0 10px 0 0;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+
+  .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
